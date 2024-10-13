@@ -162,7 +162,7 @@ npm start
 ## 💬 **Connect with Us**
 
 For any questions, feel free to reach out:  
-📧 **Email:** support.aircario@gmail.com  
+📧 **Email:** contact.aircario@gmail.com  
 🔗 **Website:**   
 📱 **Social Media:** Follow us on Twitter, Instagram, and LinkedIn!
 

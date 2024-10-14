@@ -3,7 +3,7 @@ import api from "./api";
 export const login = async (email, password, role) => {
   try {
     const response = await api.post("/auth/login", { email, password, role });
-    if (response.data && response.data.user && response.data.token) {
+    if (response.data && response.data.token) {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       return response.data.user;
@@ -11,7 +11,7 @@ export const login = async (email, password, role) => {
       throw new Error("Invalid response from server");
     }
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Login error:", error.response?.data || error.message);
     throw new Error(
       error.response?.data?.message || "An error occurred during login"
     );
@@ -26,7 +26,7 @@ export const signUp = async (name, email, password, role) => {
       password,
       role,
     });
-    if (response.data && response.data.user && response.data.token) {
+    if (response.data && response.data.token) {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       return response.data.user;
@@ -34,7 +34,7 @@ export const signUp = async (name, email, password, role) => {
       throw new Error("Invalid response from server");
     }
   } catch (error) {
-    console.error("Signup error:", error);
+    console.error("Signup error:", error.response?.data || error.message);
     throw new Error(
       error.response?.data?.message || "An error occurred during signup"
     );

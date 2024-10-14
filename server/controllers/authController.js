@@ -49,7 +49,7 @@ exports.signup = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 
@@ -93,34 +93,6 @@ exports.login = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
-  }
-};
-
-exports.createAdmin = async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    let user = await User.findOne({ email });
-    if (user) {
-      return res.status(400).json({ message: "User already exists" });
-    }
-
-    user = new User({
-      name,
-      email,
-      password,
-      role: "admin",
-    });
-
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
-
-    await user.save();
-
-    res.json({ message: "Admin user created successfully" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };

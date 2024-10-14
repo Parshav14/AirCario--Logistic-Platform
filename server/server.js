@@ -26,7 +26,7 @@ const io = socketIo(server, {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: "https://aircario.vercel.app" }));
 app.use(express.json());
 
 // Rate limiting

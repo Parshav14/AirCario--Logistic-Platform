@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { FaUser, FaTruck, FaUserShield } from "react-icons/fa";
 
 const Login = ({ setUser }) => {
-  const [email, setEmail] = useState("parshav769@gmail.com");
-  const [password, setPassword] = useState("Hifrosty");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
